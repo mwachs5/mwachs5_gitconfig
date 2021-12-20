@@ -1,40 +1,47 @@
 [user]
-	name = Megan Wachs
-	email = megan@sifive.com
+        name = Megan Wachs
+        email = megan@sifive.com
 [push]
-	default = simple
+        default = simple
 [core]
-	editor = emacs -nw
-	excludesfile = /home/megan/.gitignore
+        editor = emacs -nw
+        excludesfile = /home/megan/.gitignore
 
 [alias]
         lgs = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	lg = !"git lg1"
-	lg1 = !"git lg1-specific --all"
-	lg2 = !"git lg2-specific --all"
-	lg3 = !"git lg3-specific --all"
+        lg = !"git lg1"
+        lg1 = !"git lg1-specific --all"
+        lg2 = !"git lg2-specific --all"
+        lg3 = !"git lg3-specific --all"
 
-	lg1-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
-	lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
-	lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
-	ls = ls-tree --name-only HEAD
-	stat = status -s --untracked-files=no 
-	diffc = diff --cached
+        lg1-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
+        lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+        lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
+        ls = ls-tree --name-only HEAD
+        stat = status -s --untracked-files=no 
+        diffc = diff --cached
+        diffn = diff --name-only
+        conflicts = diff --name-only --diff-filter=U
 
 [status]
-	submodulesummary = true
+        submodulesummary = true
 
 [diff "bin"]
-	textconv =hexdump -v C
+        textconv =hexdump -v C
 [http]
-	postBuffer = 1048576000
+        postBuffer = 1048576000
 
 [merge]
-	conflictstyle = diff3
+        conflictstyle = diff3
+
+#[diff]
+#    tool = meld
+#[difftool]
+#    prompt = false
+#[difftool "meld"]
+#    cmd = meld "$LOCAL" "$REMOTE"
 
 [diff]
-    tool = meld
-[difftool]
-    prompt = false
-[difftool "meld"]
-    cmd = meld "$LOCAL" "$REMOTE"
+        tool = vscode
+[difftool "vscode"]
+        cmd = code --wait --diff $LOCAL $REMOTE
